@@ -1,0 +1,60 @@
+1. Remove duplicates in a query response 
+Pseudo code:
+User.all.unique?
+
+SQL statement:
+SELECT DISTINCT name FROM user;
+
+2. Filter records using inequalities, pattern matching, ranges and Boolean logic 
+Pseudo code: 
+Comment.all.starts_with('a')
+
+SQL statement:
+SELECT * FROM comment WHERE body LIKE 'a%';
+
+3. Sort records in a particular order 
+Pseudo code:
+Comment.all.sort(id, asc)
+
+SQL statement:
+SELECT * FROM comment ORDER BY id ASC;
+
+4. Limit the number of records returned 
+Pseudo code:
+User.all.sort(id, asc, 2)
+
+SQL statement:
+SELECT * FROM user ORDER BY id ASC LIMIT 2;
+
+5. Group records into sections
+Pseudo code: 
+Post.all.group_by(:user_id)
+
+SQL statement:
+SELECT user_id, count(user_id) FROM post
+GROUP BY user_id;
+
+6. Preform calculations with an aggregate function
+Pseudo code:
+Post.all.count
+
+SQL statement:
+SELECT COUNT(*) FROM post;
+
+7. Join tables using cross join, inner join and outer join
+Pseudo code
+Cross Join:
+User.all.name
+Post.all.body
+Comment.all.body
+
+SQL statment:
+SELECT user.name, post.body, comment.body FROM user, post, comment;
+
+Inner Join:
+User.all.join_on(Post.all.user_id)
+SELECT * FROM user INNER JOIN post ON user.id = post.user_id;
+
+Outer Join:
+User.all.join_on(comment.all.user_id)
+SELECt * FROM user RIGHT JOIN post on user.id = post.user_id;
