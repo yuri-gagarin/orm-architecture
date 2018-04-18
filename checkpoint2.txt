@@ -1,0 +1,30 @@
+1. A ruby gem is a self-contained program that helps us solve a specific porblem or serves a specific purpose. Adding a specific ruby gem to a project allows the developer to utilize its methods/functions to solve a problem without having to program it on their own. Gems are useful because they act as their own separate modules and you can plug them into your project with ease. 
+
+2. Eager loading is a situation where a function does everything it is programmed to do when it is called. Lazy loading will only do waht it is programmed to do when the function is accessed. It is useful in develeopment beacuse lazy loading can allow for faster load times initially by making the program only access what it needs, when it needs it. On the other hand, eager loading can be useful as well, because pre-loading all the data at once can make for a shortened response time later in the sequence.
+
+3. CREATE TABLE creates a table name with the name provided in the argument and sets up the strucure of the table... if proper arguments given. INSERT INTO will add the appropriate data to already created table.
+
+4. Include and extend are related, they are like cousins of each other. Include is used to add instance methods to a particular class, while extend can be used to add class methods.
+
+5. The .save method has to be an instance method because it interacts with an instance of the class. We wouldn't want the record to change for the entire class on each call of the .save function, so we only interact with one instance at a time.
+
+6. UPDATE Character
+   SET character_name = "Jar-Jar Binks", star_rating="1"
+   WHERE id = 1423435234;
+
+7.
+	def camelize(snake_word)
+		#capitalize every word after a _
+		snake_word.gsub!(/_[a-z]/, &:upcase
+		#remove every _ before capital word
+		snake_word.gsub!(/(_)([A-Z])/, '\2')
+	end
+8. 
+	def find_by(attribute, value)
+		row = connection.get_first_row <<-SQL
+			SELECT #{columns.join ","} FROM #{table}
+			WHERE #{attribute} = #{BlocRecord::Uitily.sql_strings(value)};
+		SQL
+		data = Hash[columns.zip(row)]
+		new(data)
+	end
